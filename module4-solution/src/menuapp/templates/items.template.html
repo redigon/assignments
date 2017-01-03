@@ -1,0 +1,12 @@
+<!-- <h3>Title: {{ $ctrl.myTitle }}</h3> -->
+<ol>
+  <li ng-repeat="item in $ctrl.items">
+  <b>  {{ item.id }}, {{ item.short_name }}, {{ item.name }}</b>
+  <p>  {{ item.description }} </p>
+  <p>  {{ item.price_small }}
+    {{ item.price_large }}
+    {{ item.small_portion_name }}
+    {{ item.large_portion_name }}
+  </p>
+  </li>
+</ol>
