@@ -7,12 +7,8 @@
 //  UsersService.$inject = [];
   function UsersService() {
     var service = this;
-    //Using a singular object, but this should be a list
     var user;
-
-    //Only handling one user, but this should be an add method
     service.setUser = function(newUser) {
-      console.log("Setting user...");
       user = {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -20,12 +16,10 @@
         phone: newUser.phone,
         favoriteDish: newUser.favoriteDish,
         favoriteMenuItem: newUser.favoriteMenuItem
-      };
+            };
 
     };
 
-    //Only handling one user, but this should be an get method
-    // with index as argument
     service.getUser = function() {
       console.log("Entering function getUser");
       return user;

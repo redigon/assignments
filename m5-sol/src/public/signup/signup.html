@@ -38,7 +38,7 @@
           <div class="col-sm-9">
             <input type="phone" name="phone" id="phone" placeholder="###-###-####"
               ng-model="signUpCtrl.phone" pattern="(\d{3})-(\d{3})-(\d{4})" class="form-control">
-            <span ng-if="(signUpForm.phone.$invalid ) && signUpForm.phone.$touched"
+            <span ng-if="(signUpForm.phone.$invalid || signUpForm.phone.$error.required) && signUpForm.phone.$touched"
               style="color: Red;">Invalid phone number</span>
           </div>
         </div>
@@ -60,11 +60,11 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <div  ng-if="signUpCtrl.registrationSuccess">
+        <div  ng-if="signUpCtrl.registered">
             <p>Your information has been saved</p>
         </div>
       </div>
     </div>
-<!--      <p>Test value: {{ signUpCtrl.testValue }}</p>-->
+
 
   </form>

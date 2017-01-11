@@ -7,13 +7,10 @@
   SignUpController.$inject = ['UsersService', 'MenuService'];
   function SignUpController(UsersService, MenuService) {
     var $ctrl = this;
-    $ctrl.registrationSuccess = false;
-    $ctrl.favoriteDishFound = false;
-    $ctrl.testValue = 42; //Displayed as a debug tool to show that controller working
+    $ctrl.registered = false;
 
     $ctrl.signUp = function(event) {
-      console.log("Sign up started... ");
-      $ctrl.registrationSuccess = true;
+      $ctrl.registered = true;
       event.preventDefault();
       var user = {
             firstName: $ctrl.firstName,
@@ -25,18 +22,10 @@
 
       MenuService.getMenuItem($ctrl.favoriteDish)
         .then(function(data) {
-          console.log("Dish found:", data);
           user.favoriteMenuItem = data;
-
-          //Set user (using service) - this should be "adding" instead of setting in "real world"
           UsersService.setUser(user);
-          $ctrl.favoriteDishFound = true;
-          $ctrl.registrationSuccess = true;
         }, function(err) {
-          console.log("Dish not found...");
           UsersService.setUser(user);
-          $ctrl.favoriteDishFound = false;
-          $ctrl.registrationSuccess = true;
         });
     };
   }
