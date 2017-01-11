@@ -46,7 +46,11 @@ function routeConfig ($stateProvider) {
       templateUrl: 'src/public/signup/signup.html',
       controller: 'SignUpController',
       controllerAs: 'signUpCtrl'
-
+      // resolve: {
+      //   menuCategories: ['MenuService', function (MenuService) {
+      //     return MenuService.getCategories();
+      //   }]
+      // }
     })
     .state('public.myinfo', {
       url: '/myinfo',
@@ -55,7 +59,8 @@ function routeConfig ($stateProvider) {
       controllerAs: 'myInfoCtrl',
       resolve: {
         user: ['UsersService', function (UsersService) {
-                  return UsersService.getUser();
+          console.log("entering public.myinfo resolve state");
+          return UsersService.getUser();
         }]
       }
     });
